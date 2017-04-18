@@ -1,6 +1,13 @@
 # Türkiye İl, ilçe, semt, mahalle ve posta kodu
 PTT tarafından sunulan il, ilçe ve mahalle bilgilerinin veritabanı modeli ve bilgilerini laravel paketi olarak ekleyip veritabanına rahatlıyla uygulayabilirsiniz.
 
+## Install
+app.php içerisine service provider sınıfısımızı ekliyoruz.
+
+```
+composer require cuneytyuksel/turkey-cities
+```
+
 ## Service Provider
 app.php içerisine service provider sınıfısımızı ekliyoruz.
 

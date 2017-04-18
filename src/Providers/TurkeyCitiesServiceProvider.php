@@ -27,6 +27,11 @@ class TurkeyCitiesServiceProvider extends ServiceProvider
     {
         $this->registerConfig();
         $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
+
+        $this->app->register('Maatwebsite\Excel\ExcelServiceProvider');
+        $loader = \Illuminate\Foundation\AliasLoader::getInstance();
+        $loader->alias('Excel', 'Maatwebsite\Excel\Facades\Excel');
+
         $this->commands('command.turkey.cities');
         $this->app->singleton('command.turkey.cities', function ($app) {
             return new \Turkey\Cities\Console\CitiesCommand();
@@ -58,5 +63,4 @@ class TurkeyCitiesServiceProvider extends ServiceProvider
     {
         return array('command.turkey.cities');
     }
-
 }
