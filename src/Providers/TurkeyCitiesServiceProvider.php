@@ -1,4 +1,5 @@
 <?php namespace Turkey\Cities\Providers;
+
 /**
  * Created by PhpStorm.
  * User: cuneyt
@@ -7,7 +8,7 @@
  */
 use Illuminate\Support\ServiceProvider;
 
-class TurkeyCitiesServiceProivder extends ServiceProvider
+class TurkeyCitiesServiceProvider extends ServiceProvider
 {
     /**
      * Indicates if loading of the provider is deferred.
@@ -25,8 +26,8 @@ class TurkeyCitiesServiceProivder extends ServiceProvider
     public function boot()
     {
         $this->registerConfig();
+        $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
         $this->commands('command.turkey.cities');
-
         $this->app->singleton('command.turkey.cities', function ($app) {
             return new \Turkey\Cities\Console\CitiesCommand();
         });
@@ -40,11 +41,11 @@ class TurkeyCitiesServiceProivder extends ServiceProvider
     protected function registerConfig()
     {
         $this->publishes([
-            __DIR__.'/../Config/config.php' => config_path('turkey-cities.php'),
+            __DIR__ . '/../Config/config.php' => config_path('turkey-cities.php'),
         ]);
 
         $this->mergeConfigFrom(
-            __DIR__.'/../Config/config.php', 'turkey-cities'
+            __DIR__ . '/../Config/config.php', 'turkey-cities'
         );
     }
 
