@@ -28,17 +28,30 @@ class CitiesSeeder extends Seeder
             $neighborhoodModel = config('turkey-cities.models.neighborhood');
 
             foreach ($values as $cityName => $counties) {
-                //Create or select for cities
-                $city = $cityModel::firstOrCreate(['name' => rtrim($cityName, " ")]);
+                $cityName = rtrim($cityName, " ");
+                $city = $cityModel::firstOrNew(array('name' => $cityName));
+                $city->name = $cityName;
+                $city->save();
                 foreach ($counties as $countyName => $districts) {
-                    //Create or select for county
-                    $county = $countyModel::firstOrCreate(['name' => rtrim($countyName, " "), 'city_id' => $city->id]);
+                    $countyName = rtrim($countyName, " ");
+                    $county = $countyModel::firstOrNew(array('name' => $countyName, 'city_id' => $city->id));
+                    $county->name = $countyName;
+                    $county->city_id = $city->id;
+                    $county->save();
                     foreach ($districts as $districtName => $neighborhoods) {
-                        //Create or select for district
-                        $district = $districtModel::firstOrCreate(['name' => rtrim($districtName, " "), 'county_id' => $county->id]);
+                        $districtName = rtrim($districtName, " ");
+                        $district = $districtModel::firstOrNew(array('name' => $districtName, 'county_id' => $county->id));
+                        $district->name = $districtName;
+                        $district->county_id = $county->id;
+                        $district->save();
                         foreach ($neighborhoods as $neighborhoodData) {
-                            //Create or select for neighborhood
-                            $neighborhoodModel::firstOrCreate(['name' => rtrim($neighborhoodData['name'], " "), 'pk' => rtrim($neighborhoodData['pk'], " "), 'district_id' => $district->id]);
+                            $neighborhoodName = rtrim($neighborhoodData['name'], " ");
+                            $neighborhoodPk = rtrim($neighborhoodData['pk'], " ");
+                            $neighborhood = $neighborhoodModel::firstOrNew(array('name' => $neighborhoodName, 'pk' => $neighborhoodPk, 'district_id' => $district->id));
+                            $neighborhood->name = $neighborhoodName;
+                            $neighborhood->pk = $neighborhoodPk;
+                            $neighborhood->district_id = $district->id;
+                            $neighborhood->save();
                         }
                     }
                 }

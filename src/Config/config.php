@@ -11,10 +11,10 @@ return [
 
     'models' =>
         [
-            'city' => '\Turkey\Cities\Models\City',
-            'county' => '\Turkey\Cities\Models\County',
-            'district' => '\Turkey\Cities\Models\District',
-            'neighborhood' => '\Turkey\Cities\Models\Neighborhood'
+            'city' => 'Turkey\Cities\Models\City',
+            'county' => 'Turkey\Cities\Models\County',
+            'district' => 'Turkey\Cities\Models\District',
+            'neighborhood' => 'Turkey\Cities\Models\Neighborhood'
         ],
 
     //Database table name for models

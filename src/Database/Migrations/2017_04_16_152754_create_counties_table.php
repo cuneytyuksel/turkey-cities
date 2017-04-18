@@ -13,12 +13,12 @@ class CreateCountiesTable extends Migration
      */
     public function up()
     {
-        Schema::create(config('turkey-cities.tables.county','counties'), function (Blueprint $table) {
+        Schema::create(config('turkey-cities.tables.county', 'counties'), function (Blueprint $table) {
             $table->increments('id');
             $table->integer('city_id')->unsigned();
             $table->string('name');
 
-            $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');
+            $table->foreign('city_id')->references('id')->on(config('turkey-cities.tables.city', 'cities'))->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
@@ -29,6 +29,6 @@ class CreateCountiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('counties');
+        Schema::dropIfExists(config('turkey-cities.tables.county', 'counties'));
     }
 }

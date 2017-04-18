@@ -13,12 +13,12 @@ class CreateDistrictsTable extends Migration
      */
     public function up()
     {
-        Schema::create(config('turkey-cities.tables.district','districts'), function (Blueprint $table) {
+        Schema::create(config('turkey-cities.tables.district', 'districts'), function (Blueprint $table) {
             $table->increments('id');
             $table->integer('county_id')->unsigned();
             $table->string('name');
 
-            $table->foreign('county_id')->references('id')->on('counties')->onDelete('cascade');
+            $table->foreign('county_id')->references('id')->on(config('turkey-cities.tables.county', 'counties'))->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
@@ -29,6 +29,6 @@ class CreateDistrictsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('districts');
+        Schema::dropIfExists(config('turkey-cities.tables.district', 'districts'));
     }
 }

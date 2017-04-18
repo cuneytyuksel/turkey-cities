@@ -13,13 +13,13 @@ class CreateNeighborhoodsTable extends Migration
      */
     public function up()
     {
-        Schema::create(config('turkey-cities.tables.neighborhood','neighborhoods'), function (Blueprint $table) {
+        Schema::create(config('turkey-cities.tables.neighborhood', 'neighborhoods'), function (Blueprint $table) {
             $table->increments('id');
             $table->integer('district_id')->unsigned();
             $table->string('name');
             $table->string('pk');
 
-            $table->foreign('district_id')->references('id')->on('districts')->onDelete('cascade');
+            $table->foreign('district_id')->references('id')->on(config('turkey-cities.tables.district', 'districts'))->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
@@ -30,6 +30,6 @@ class CreateNeighborhoodsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('neighborhoods');
+        Schema::dropIfExists(config('turkey-cities.tables.neighborhood', 'neighborhoods'));
     }
 }
