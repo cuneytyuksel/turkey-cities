@@ -1,4 +1,4 @@
-<?php namespace Turkey\Cities;
+<?php namespace Turkey\Cities\Providers;
 /**
  * Created by PhpStorm.
  * User: cuneyt
