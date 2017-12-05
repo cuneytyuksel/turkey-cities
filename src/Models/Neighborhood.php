@@ -31,7 +31,7 @@ class Neighborhood extends Model
         $this->table = config('turkey-cities.tables.neighborhoods', 'neighborhoods');
     }
 
-    public function disticts()
+    public function district()
     {
         return $this->belongsTo(config('turkey-cities.models.district', 'Turkey\Cities\Models\District'));
     }
