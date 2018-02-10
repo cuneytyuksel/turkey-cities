@@ -7,7 +7,7 @@
  */
 
 return [
-    'data_path' => __DIR__ . '/../Data/28_09_2017.xlsx', // set your default PTT cities xlsx file.
+    'data_path' => __DIR__ . '/../Data/12_01_2018.xlsx', // set your default PTT cities xlsx file.
 
     'models' =>
         [
