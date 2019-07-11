@@ -62,7 +62,7 @@ class CitiesSeeder extends Seeder
     private function readXlsxData()
     {
         try {
-            $data = \Maatwebsite\Excel\Facades\Excel::load(config('turkey-cities.data_path'));
+            $data = \Maatwebsite\Excel\Facades\Excel::import(config('turkey-cities.data_path'));
             return $data->get();
         } catch (\Exception $exception) {
             \Log::info($exception->getMessage());

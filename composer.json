@@ -1,6 +1,17 @@
 {
   "name": "cuneytyuksel/turkey-cities",
-  "description": "Turkey Cities and States",
+  "description": "Turkey Cities and States - Türkiye İl ve İlçeler (PTT)",
+  "license": "MIT",
+  "keywords": [
+    "laravel",
+    "turkey",
+    "city",
+    "state",
+    "ptt",
+    "turkiye",
+    "il",
+    "ilçe"
+  ],
   "authors": [
     {
       "name": "Cüneyt Yüksel",
@@ -8,11 +19,20 @@
     }
   ],
   "require": {
-    "maatwebsite/excel": "~2.1.0"
+    "maatwebsite/excel": "~3.1.14"
   },
   "autoload": {
     "psr-4": {
       "Turkey\\Cities\\": "src/"
     }
-  }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Turkey\\Cities\\Providers\\TurkeyCitiesServiceProvider"
+      ]
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
 }
