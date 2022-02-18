@@ -7,22 +7,27 @@
  */
 
 return [
-    'data_path' => __DIR__ . '/../Data/2019_06_26.xlsx', // set your default PTT cities xlsx file.
+    'data_path' => __DIR__ . '/../Data/pk_20220127.xlsx', // set your default PTT cities xlsx file.
 
-    'models' =>
-        [
-            'city' => 'Turkey\Cities\Models\City',
-            'county' => 'Turkey\Cities\Models\County',
-            'district' => 'Turkey\Cities\Models\District',
-            'neighborhood' => 'Turkey\Cities\Models\Neighborhood'
-        ],
+    'models' => [
+        'city' => 'Turkey\Cities\Models\City',
+        'county' => 'Turkey\Cities\Models\County',
+        'district' => 'Turkey\Cities\Models\District',
+        'neighborhood' => 'Turkey\Cities\Models\Neighborhood'
+    ],
 
     //Database table name for models
-    'tables' =>
-        [
-            'city' => 'cities',
-            'county' => 'counties',
-            'district' => 'districts',
-            'neighborhood' => 'neighborhoods'
-        ]
+    'tables' => [
+        'city' => 'cities',
+        'county' => 'counties',
+        'district' => 'districts',
+        'neighborhood' => 'neighborhoods'
+    ],
+
+    //Import settings
+    'import' => [
+        'county' => true,
+        'district' => true,
+        'neighborhood' => true
+    ]
 ];

@@ -1,15 +1,15 @@
 # Türkiye İl, ilçe, semt, mahalle ve posta kodu
-PTT tarafından sunulan il, ilçe ve mahalle bilgilerinin veritabanı modeli ve bilgilerini laravel paketi olarak ekleyip veritabanına rahatlıyla uygulayabilirsiniz.
+PTT tarafından sunulan il, ilçe ve mahalle bilgilerinin veritabanı modeli ve bilgilerini laravel paketi olarak ekleyip veritabanına kolayca uygulayabilirsiniz.
 
 ## Install
-app.php içerisine service provider sınıfısımızı ekliyoruz.
+config/app.php içerisine service provider sınıfısımızı ekliyoruz.
 
 ```
 composer require cuneytyuksel/turkey-cities
 ```
 
 ## Service Provider
-app.php içerisine service provider sınıfısımızı ekliyoruz.
+config/app.php içerisine service provider sınıfısımızı ekliyoruz.
 
 ```php
 /*
@@ -19,21 +19,21 @@ Turkey\Cities\Providers\TurkeyCitiesServiceProvider::class,
 ```
 
 ## Vendor Publish
-Config dosyasını publish ederek gerekli değişikleri sağlayabilirsiniz.
+Config dosyasını publish ederek gerekli değişikleri sağlayabilirsiniz. config/turkey-cities.php
 
 ```
 php artisan vendor:publish --provider="Turkey\Cities\Providers\TurkeyCitiesServiceProvider"
 ```
 
 ## Migration
-Gerekli tabloları ve sütunları oluşturması için migration işlemi uyguluyoruz.
+Veritabanında tabloları oluşturması için migration işlemi uyguluyoruz.
 
 ```
 php artisan migrate
 ```
 
 ## Data Entegrasyonu
-PTT tarafından verilen .xlsx uzantılı doyasımız dahili olarak pakaet içerisine bulunmaktadır fakat isteğiniz doğrultusunda turkey-cities.php config dosyasından yolunu değişitrip düzenlemiş olduğunuz dosya yolunuda gösterebilirsiniz.
+PTT tarafından verilen .xlsx uzantılı doyasımız dahili olarak paket içerisine bulunmaktadır fakat isteğiniz doğrultusunda turkey-cities.php config dosyasından yolunu değişitrip düzenlemiş olduğunuz dosya yolunu gösterebilirsiniz. (https://postakodu.ptt.gov.tr/)
 ```
 php artisan turkey:cities
 ```
